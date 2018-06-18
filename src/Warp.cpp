@@ -570,28 +570,59 @@ void Warp::keyDown( KeyEvent &event )
 		if( mSelected >= mPoints.size() )
 			return;
 		float step = event.isShiftDown() ? 10.0f : 0.5f;
-		mPoints[mSelected].y -= step / mWindowSize.y;
+		if (event.isAltDown()) {
+			for (int i = 0; i < mPoints.size(); i++) {
+				mPoints[i].y -= step / mWindowSize.y;
+			}
+		}
+		else {
+			mPoints[mSelected].y -= step / mWindowSize.y;
+		}
+		
 		mIsDirty = true;
 	} break;
 	case KeyEvent::KEY_DOWN: {
 		if( mSelected >= mPoints.size() )
 			return;
 		float step = event.isShiftDown() ? 10.0f : 0.5f;
-		mPoints[mSelected].y += step / mWindowSize.y;
+		if (event.isAltDown()) {
+			for (int i = 0; i < mPoints.size(); i++) {
+				mPoints[i].y += step / mWindowSize.y;
+			}
+		}
+		else {
+			mPoints[mSelected].y += step / mWindowSize.y;
+		}
 		mIsDirty = true;
 	} break;
 	case KeyEvent::KEY_LEFT: {
 		if( mSelected >= mPoints.size() )
 			return;
 		float step = event.isShiftDown() ? 10.0f : 0.5f;
-		mPoints[mSelected].x -= step / mWindowSize.x;
+		
+		if (event.isAltDown()) {
+			for (int i = 0; i < mPoints.size(); i++) {
+				mPoints[i].x -= step / mWindowSize.x;
+			}
+		}
+		else {
+			mPoints[mSelected].x -= step / mWindowSize.x;
+		}
 		mIsDirty = true;
 	} break;
 	case KeyEvent::KEY_RIGHT: {
 		if( mSelected >= mPoints.size() )
 			return;
 		float step = event.isShiftDown() ? 10.0f : 0.5f;
-		mPoints[mSelected].x += step / mWindowSize.x;
+		
+		if (event.isAltDown()) {
+			for (int i = 0; i < mPoints.size(); i++) {
+				mPoints[i].x += step / mWindowSize.x;
+			}
+		}
+		else {
+			mPoints[mSelected].x += step / mWindowSize.x;
+		}
 		mIsDirty = true;
 	} break;
 	case KeyEvent::KEY_MINUS:
